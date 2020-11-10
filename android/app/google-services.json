@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "466306077624",
+    "firebase_url": "https://udemy-clone-b81f6.firebaseio.com",
+    "project_id": "udemy-clone-b81f6",
+    "storage_bucket": "udemy-clone-b81f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466306077624:android:476ad2464244e028d8754d",
+        "android_client_info": {
+          "package_name": "com.example.udemy_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466306077624-k1o2pv216tnnco1aufmlaehb9rtj3tj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.udemy_clone",
+            "certificate_hash": "fa06f2f2fa634a15be36e5fe845ffefb456ebc93"
+          }
+        },
+        {
+          "client_id": "466306077624-4phs6rvr044a27cqud3nd2q2d3rpe5rb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6ZEREfZ7OIc4S-iCPw52lMEqdrgEgtlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466306077624-4phs6rvr044a27cqud3nd2q2d3rpe5rb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
