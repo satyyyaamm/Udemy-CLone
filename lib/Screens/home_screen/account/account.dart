@@ -1,8 +1,10 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:udemy_clone/Screens/Splash_screen.dart';
 import 'package:udemy_clone/Screens/landing_page.dart';
 import 'package:udemy_clone/services/authentication.dart';
+import 'package:udemy_clone/services/storage.dart';
 import 'package:udemy_clone/widgets/optionCustomListTile.dart';
 import 'package:udemy_clone/widgets/optionHeadingText.dart';
 
@@ -12,6 +14,7 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
+  SecureStorage secureStorage = SecureStorage();
   Authentication authentication = Authentication();
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class _AccountState extends State<Account> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'Satyam Tiwari',
+                    finalName,
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                   Padding(
@@ -53,7 +56,7 @@ class _AccountState extends State<Account> {
                         Icon(EvaIcons.google, color: Colors.white),
                         SizedBox(width: 7),
                         Text(
-                          'satyamt5152@gmail.com',
+                          finalEmail,
                           style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 18,
@@ -125,7 +128,11 @@ class _AccountState extends State<Account> {
             Center(
               child: MaterialButton(
                 onPressed: () async {
-                  await authentication.googleSignOut().whenComplete(
+                  await authentication
+                      .googleSignOut()
+                      .whenComplete(
+                          () => secureStorage.deleteSecureData('email'))
+                      .whenComplete(
                         () => Navigator.pushReplacement(
                           context,
                           PageTransition(

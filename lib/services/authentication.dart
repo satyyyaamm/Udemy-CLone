@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:udemy_clone/services/storage.dart';
 
 class Authentication {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   GoogleSignIn _googleSignIn = GoogleSignIn();
+  final SecureStorage secureStorage = SecureStorage();
 
   Future<String> googlesignin() async {
     final GoogleSignInAccount googleSignInAccount =
@@ -20,6 +22,8 @@ class Authentication {
     assert(user.email != null);
     final User currentUser = _firebaseAuth.currentUser;
     assert(currentUser.uid == user.uid);
+    secureStorage.writeSecureData('email', user.email);
+    secureStorage.writeSecureData('name', user.displayName);
     return 'error ocurred';
   }
 

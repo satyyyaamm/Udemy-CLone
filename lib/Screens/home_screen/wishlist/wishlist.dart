@@ -159,6 +159,10 @@ class _WishlistState extends State<Wishlist> {
                                                   ),
                                                 ),
                                               ),
+                                              IconButton(
+                                                  icon: Icon(Icons.delete),
+                                                  onPressed: () async {},
+                                                  color: Colors.grey)
                                             ],
                                           ),
                                           Row(

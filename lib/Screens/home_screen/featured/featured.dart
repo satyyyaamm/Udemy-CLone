@@ -86,7 +86,7 @@ class _FeaturedState extends State<Featured> {
               CourseTemplate(courseName: 'Featured'),
               CourseHeading(title: 'Top Courses in Design'),
               CourseTemplate(courseName: 'Design'),
-              CourseHeading(title: 'Devepoler Courses'),
+              CourseHeading(title: 'Developer Courses'),
               CourseTemplate(courseName: 'Development'),
               CourseHeading(title: 'Top rated'),
               CourseTemplate(courseName: 'Top'),

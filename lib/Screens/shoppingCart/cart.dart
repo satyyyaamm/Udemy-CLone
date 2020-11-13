@@ -145,6 +145,10 @@ class ShoppingCart extends StatelessWidget {
                                                     ),
                                                   ),
                                                 ),
+                                                IconButton(
+                                                    icon: Icon(Icons.delete),
+                                                    onPressed: () {},
+                                                    color: Colors.grey)
                                               ],
                                             ),
                                             Row(
