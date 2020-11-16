@@ -3,10 +3,12 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:udemy_clone/Screens/Splash_screen.dart';
 import 'package:udemy_clone/Screens/detailScreen/addToButton.dart';
 import 'package:udemy_clone/Screens/detailScreen/deatailPageChips.dart';
 import 'package:udemy_clone/Screens/shoppingCart/cart.dart';
 import 'package:udemy_clone/Video/videoPlayer.dart';
+import 'package:udemy_clone/services/paymentGateway.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key key}) : super(key: key);
@@ -179,19 +181,31 @@ class DetailScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              MaterialButton(
-                splashColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 130),
-                color: Colors.redAccent.shade200,
-                onPressed: () {},
-                child: Text(
-                  'Buy Now',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              GetBuilder<PaymentGateway>(
+                  init: PaymentGateway(),
+                  builder: (val) {
+                    return MaterialButton(
+                      splashColor: Colors.white,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 130),
+                      color: Colors.redAccent.shade200,
+                      onPressed: () {
+                        val.dispatchPayment(
+                            amount: Get.arguments['price'],
+                            email: finalEmail,
+                            name: finalName,
+                            contact: '',
+                            wallet: '');
+                      },
+                      child: Text(
+                        'Buy Now',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  }),
               Row(
                 children: [
                   AddToButton(
