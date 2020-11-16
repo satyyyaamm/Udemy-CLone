@@ -1,9 +1,11 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:udemy_clone/Screens/home_screen.dart';
-import 'package:udemy_clone/Screens/sign_in_options/signup.dart';
+import 'package:udemy_clone/Screens/home_screen/home_screen.dart';
+import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Sign_in_with_email_and_password.dart';
+import 'package:udemy_clone/Screens/sign_in_options/sign_up_screen/signup.dart';
 import 'package:udemy_clone/services/authentication.dart';
 import 'package:udemy_clone/widgets/create_new_account.dart';
 import 'package:udemy_clone/widgets/ordivider.dart';
@@ -46,7 +48,10 @@ class _SignInState extends State<SignIn> {
                     EvaIcons.emailOutline,
                     color: Colors.red,
                   ),
-                  onpressed: () {},
+                  onpressed: () {
+                    Get.to(SignInWithEmailAndPassword(),
+                        transition: Transition.upToDown);
+                  },
                 ),
               ),
               Padding(

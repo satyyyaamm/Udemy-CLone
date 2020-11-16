@@ -1,8 +1,8 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:udemy_clone/Screens/Splash_screen.dart';
-import 'package:udemy_clone/Screens/landing_page.dart';
+import 'package:udemy_clone/Screens/splash_screen/Splash_screen.dart';
+import 'package:udemy_clone/Screens/splash_screen/landing_page.dart';
 import 'package:udemy_clone/services/authentication.dart';
 import 'package:udemy_clone/services/storage.dart';
 import 'package:udemy_clone/widgets/optionCustomListTile.dart';

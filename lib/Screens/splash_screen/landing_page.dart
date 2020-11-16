@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:udemy_clone/Screens/sign_in_options/signin.dart';
+import 'package:udemy_clone/Screens/sign_in_options/sign_in_screen/signin.dart';
 import 'package:udemy_clone/widgets/landing_page_custom-button.dart';
 
 class LandingPage extends StatefulWidget {

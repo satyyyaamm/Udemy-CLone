@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:udemy_clone/Screens/home_screen.dart';
-import 'package:udemy_clone/Screens/landing_page.dart';
+import 'package:udemy_clone/Screens/home_screen/home_screen.dart';
+import 'package:udemy_clone/Screens/splash_screen/landing_page.dart';
 import 'package:udemy_clone/services/storage.dart';
 
 String finalEmail;

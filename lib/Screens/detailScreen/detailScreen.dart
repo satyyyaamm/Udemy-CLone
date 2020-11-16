@@ -3,7 +3,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:udemy_clone/Screens/Splash_screen.dart';
+import 'package:udemy_clone/Screens/splash_screen/Splash_screen.dart';
 import 'package:udemy_clone/Screens/detailScreen/addToButton.dart';
 import 'package:udemy_clone/Screens/detailScreen/deatailPageChips.dart';
 import 'package:udemy_clone/Screens/shoppingCart/cart.dart';

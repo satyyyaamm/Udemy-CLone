@@ -1,5 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:udemy_clone/Screens/sign_in_options/sign_up_screen/CreateAccount.dart';
 import 'package:udemy_clone/widgets/create_new_account.dart';
 import 'package:udemy_clone/widgets/ordivider.dart';
 import 'package:udemy_clone/widgets/signin_option_button.dart';
@@ -40,7 +42,9 @@ class _SignUpState extends State<SignUp> {
                     EvaIcons.emailOutline,
                     color: Colors.red,
                   ),
-                  onpressed: () {},
+                  onpressed: () {
+                    Get.to(CreateAccountPage());
+                  },
                 ),
               ),
               Padding(
