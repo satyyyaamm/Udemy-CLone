@@ -33,6 +33,7 @@ dependencies:
   flutter_launcher_icons: ^0.8.1
   flutter_secure_storage: ^3.3.5
   font_awesome_flutter: ^8.10.0
+  form_field_validator: ^1.0.1
   get: ^3.15.0
   google_sign_in: ^4.5.5
   page_transition: ^1.1.7+2

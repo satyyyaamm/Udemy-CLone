@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Custom_flat_button.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Custom_input.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Heading_for_sign_in.dart';
+import 'package:udemy_clone/services/Firebase_controller.dart';
 
-class CreateAccountPage extends StatefulWidget {
-  @override
-  _CreateAccountPageState createState() => _CreateAccountPageState();
-}
+TextEditingController nameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
-class _CreateAccountPageState extends State<CreateAccountPage> {
-  TextEditingController nameController = TextEditingController();
+final GlobalKey<FormState> nameformKey = GlobalKey<FormState>();
+final GlobalKey<FormState> emailformKey = GlobalKey<FormState>();
+final GlobalKey<FormState> passwordformKey = GlobalKey<FormState>();
 
+class CreateAccountPage extends GetWidget<FirebaseController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,29 +35,53 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   title1: 'Create an account',
                   hastitle2: false,
                 ),
-                CustomInput(
-                  padding: const EdgeInsets.only(
-                      top: 20, left: 20, right: 20, bottom: 10),
-                  validator: (value) {},
-                  labelText: 'Name',
-                  controller: nameController,
-                  obscureText: false,
+                Form(
+                  key: nameformKey,
+                  child: CustomInput(
+                    padding: const EdgeInsets.only(
+                        top: 20, left: 20, right: 20, bottom: 10),
+                    validator: (value) {
+                      if (nameController.text.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
+                    labelText: 'Name',
+                    controller: nameController,
+                    obscureText: false,
+                  ),
                 ),
-                CustomInput(
-                  padding: const EdgeInsets.only(
-                      top: 20, left: 20, right: 20, bottom: 10),
-                  validator: (value) {},
-                  labelText: 'Email',
-                  controller: nameController,
-                  obscureText: false,
+                Form(
+                  key: emailformKey,
+                  child: CustomInput(
+                    padding: const EdgeInsets.only(
+                        top: 20, left: 20, right: 20, bottom: 10),
+                    validator: (value) {
+                      if (emailController.text.isEmpty) {
+                        return 'Please enter your an email';
+                      }
+                      return null;
+                    },
+                    labelText: 'Email',
+                    controller: emailController,
+                    obscureText: false,
+                  ),
                 ),
-                CustomInput(
-                  padding: const EdgeInsets.only(
-                      top: 20, left: 20, right: 20, bottom: 10),
-                  validator: (value) {},
-                  labelText: 'Password',
-                  controller: nameController,
-                  obscureText: true,
+                Form(
+                  key: passwordformKey,
+                  child: CustomInput(
+                    padding: const EdgeInsets.only(
+                        top: 20, left: 20, right: 20, bottom: 10),
+                    validator: (value) {
+                      if (passwordController.text.length <= 7) {
+                        return 'Password must be 7+ letters';
+                      }
+                      return null;
+                    },
+                    labelText: 'Password',
+                    controller: passwordController,
+                    obscureText: true,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -74,7 +101,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         titleColor: Colors.black,
                         color: Colors.white,
                         padding: const EdgeInsets.only(),
-                        onpressed: () {},
+                        onpressed: createAccount,
                         title: 'Create account',
                       ),
                     ],
@@ -94,5 +121,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         ),
       ),
     );
+  }
+
+  void createAccount() {
+    controller.createAccount(
+        nameController.text, emailController.text, passwordController.text);
   }
 }

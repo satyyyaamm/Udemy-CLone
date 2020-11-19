@@ -8,6 +8,7 @@ class CustomFlatButton extends StatelessWidget {
   final Color color;
   final Color titleColor;
   final double fontsize;
+  final FocusNode focusNode;
   const CustomFlatButton({
     Key key,
     this.title,
@@ -16,6 +17,7 @@ class CustomFlatButton extends StatelessWidget {
     this.color,
     this.titleColor,
     this.fontsize,
+    this.focusNode,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class CustomFlatButton extends StatelessWidget {
       padding: padding,
       child: FlatButton(
         color: color,
+        focusNode: focusNode,
         onPressed: onpressed,
         child: Text(
           title,

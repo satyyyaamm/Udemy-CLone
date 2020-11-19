@@ -1,19 +1,17 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:udemy_clone/Screens/splash_screen/Splash_screen.dart';
 import 'package:udemy_clone/Screens/splash_screen/landing_page.dart';
-import 'package:udemy_clone/services/authentication.dart';
+import 'package:udemy_clone/services/Firebase_controller.dart';
+import 'package:udemy_clone/services/Google_authentication.dart';
 import 'package:udemy_clone/services/storage.dart';
 import 'package:udemy_clone/widgets/optionCustomListTile.dart';
 import 'package:udemy_clone/widgets/optionHeadingText.dart';
 
-class Account extends StatefulWidget {
-  @override
-  _AccountState createState() => _AccountState();
-}
-
-class _AccountState extends State<Account> {
+// ignore: must_be_immutable
+class Account extends GetWidget<FirebaseController> {
   SecureStorage secureStorage = SecureStorage();
   Authentication authentication = Authentication();
   @override
@@ -140,6 +138,7 @@ class _AccountState extends State<Account> {
                               type: PageTransitionType.bottomToTop),
                         ),
                       );
+                  signOut();
                 },
                 child: Text(
                   'Sign out',
@@ -163,5 +162,9 @@ class _AccountState extends State<Account> {
         ),
       ),
     );
+  }
+
+  void signOut() {
+    controller.signout();
   }
 }

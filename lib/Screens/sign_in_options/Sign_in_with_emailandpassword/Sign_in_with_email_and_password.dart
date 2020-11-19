@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Custom_flat_button.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Custom_input.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Heading_for_sign_in.dart';
+import 'package:udemy_clone/services/Firebase_controller.dart';
+
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class SignInWithEmailAndPassword extends StatefulWidget {
   @override
@@ -12,8 +16,8 @@ class SignInWithEmailAndPassword extends StatefulWidget {
 
 class _SignInWithEmailAndPasswordState
     extends State<SignInWithEmailAndPassword> {
-  TextEditingController emailController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> emailformKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,18 +38,21 @@ class _SignInWithEmailAndPasswordState
                 title1: 'Welcome Back!',
                 title2: 'Enter your email to sign in to your account',
               ),
-              CustomInput(
-                padding: const EdgeInsets.only(
-                    top: 80, left: 20, right: 20, bottom: 10),
-                validator: (value) {
-                  if (emailController.text.isEmpty) {
-                    return 'Please enter some email';
-                  }
-                  return null;
-                },
-                controller: emailController,
-                obscureText: false,
-                labelText: 'Email',
+              Form(
+                key: emailformKey,
+                child: CustomInput(
+                  padding: const EdgeInsets.only(
+                      top: 80, left: 20, right: 20, bottom: 10),
+                  validator: (value) {
+                    if (emailController.text.isEmpty) {
+                      return 'Please enter some email';
+                    }
+                    return null;
+                  },
+                  controller: emailController,
+                  obscureText: false,
+                  labelText: 'Email',
+                ),
               ),
               CustomFlatButton(
                 fontsize: 16,
@@ -54,7 +61,7 @@ class _SignInWithEmailAndPasswordState
                 padding: const EdgeInsets.only(left: 240, right: 20),
                 title: 'Next',
                 onpressed: () {
-                  if (_formKey.currentState.validate()) {
+                  if (emailformKey.currentState.validate()) {
                     Get.to(Password());
                   }
                 },
@@ -67,13 +74,8 @@ class _SignInWithEmailAndPasswordState
   }
 }
 
-class Password extends StatefulWidget {
-  @override
-  _PasswordState createState() => _PasswordState();
-}
-
-class _PasswordState extends State<Password> {
-  TextEditingController passwordController = TextEditingController();
+class Password extends GetWidget<FirebaseController> {
+  final GlobalKey<FormState> passwordformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -94,15 +96,23 @@ class _PasswordState extends State<Password> {
               HeadingForSignIn(
                 title1: 'Almost there!',
                 title2:
-                    'Enter your password to sign on with \n Satyamt5152@gmail.com',
+                    'Enter your password to sign on with \n ${emailController.text}',
               ),
-              CustomInput(
-                padding: const EdgeInsets.only(
-                    top: 80, left: 20, right: 20, bottom: 10),
-                validator: (value) {},
-                controller: passwordController,
-                obscureText: true,
-                labelText: 'Password',
+              Form(
+                key: passwordformKey,
+                child: CustomInput(
+                  padding: const EdgeInsets.only(
+                      top: 80, left: 20, right: 20, bottom: 10),
+                  validator: (value) {
+                    if (passwordController.text.length <= 7) {
+                      return 'Password must be greater then 7 letters';
+                    }
+                    return null;
+                  },
+                  controller: passwordController,
+                  obscureText: true,
+                  labelText: 'Password',
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -123,7 +133,7 @@ class _PasswordState extends State<Password> {
                       color: Colors.white,
                       padding: const EdgeInsets.only(),
                       title: 'Sign in',
-                      onpressed: () {},
+                      onpressed: login,
                     ),
                   ],
                 ),
@@ -141,5 +151,9 @@ class _PasswordState extends State<Password> {
         ),
       ),
     );
+  }
+
+  void login() {
+    controller.login(emailController.text, passwordController.text);
   }
 }

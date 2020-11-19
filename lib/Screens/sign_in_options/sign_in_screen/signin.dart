@@ -6,7 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:udemy_clone/Screens/home_screen/home_screen.dart';
 import 'package:udemy_clone/Screens/sign_in_options/Sign_in_with_emailandpassword/Sign_in_with_email_and_password.dart';
 import 'package:udemy_clone/Screens/sign_in_options/sign_up_screen/signup.dart';
-import 'package:udemy_clone/services/authentication.dart';
+import 'package:udemy_clone/services/Google_authentication.dart';
 import 'package:udemy_clone/widgets/create_new_account.dart';
 import 'package:udemy_clone/widgets/ordivider.dart';
 import 'package:udemy_clone/widgets/signin_option_button.dart';
